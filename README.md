@@ -22,7 +22,7 @@ pod 'UnlikeModal'
 
 ## Author
 
-Dev-MJ, lee.myeongjae@navercorp.com
+Dev-MJ, mr.lucifers@gmail.com
 
 ## License
 

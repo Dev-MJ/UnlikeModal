@@ -24,14 +24,14 @@ TODO: Add long description of the pod here.
   s.homepage         = 'https://github.com/Dev-MJ/UnlikeModal'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Dev-MJ' => 'lee.myeongjae@navercorp.com' }
+  s.author           = { 'Dev-MJ' => 'mr.lucifers@gmail.com' }
   s.source           = { :git => 'https://github.com/Dev-MJ/UnlikeModal.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'UnlikeModal/Classes/**/*'
-  
+
   # s.resource_bundles = {
   #   'UnlikeModal' => ['UnlikeModal/Assets/*.png']
   # }

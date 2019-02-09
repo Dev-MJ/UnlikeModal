@@ -1,0 +1,22 @@
+{
+  "name": "UnlikeModal",
+  "version": "0.1.0",
+  "summary": "A short description of UnlikeModal.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Dev-MJ/UnlikeModal",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Dev-MJ": "mr.lucifers@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/Dev-MJ/UnlikeModal.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "UnlikeModal/Classes/**/*"
+}
