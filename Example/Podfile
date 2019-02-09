@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'UnlikeModal_Example' do
+  pod 'UnlikeModal', :path => '../'
+
+  target 'UnlikeModal_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
