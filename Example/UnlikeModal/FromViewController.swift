@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import UnlikeModal
 
 class FromViewController: UIViewController {
 
-    let transition = PresentingAnimator(type: .fadeIn, duration: 1.0)
+    let transition = ModalAnimator(type: .fadeIn, duration: 1.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,7 @@ class FromViewController: UIViewController {
 }
 
 extension FromViewController: UIViewControllerTransitioningDelegate {
-    
+
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return transition
     }

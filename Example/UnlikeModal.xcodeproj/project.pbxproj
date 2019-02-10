@@ -15,7 +15,6 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		8A2714CD220F24DD00A55340 /* ToViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2714CC220F24DD00A55340 /* ToViewController.swift */; };
-		8A2714CF220F250000A55340 /* PresentingAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2714CE220F250000A55340 /* PresentingAnimator.swift */; };
 		F501F961377642276755F9E6 /* Pods_UnlikeModal_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 387AAB33B8BAD594512CDAE4 /* Pods_UnlikeModal_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,7 +46,6 @@
 		687A7F94929DF04530BF3DC1 /* Pods_UnlikeModal_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnlikeModal_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D2D3F18D064EA498E329BA6 /* UnlikeModal.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = UnlikeModal.podspec; path = ../UnlikeModal.podspec; sourceTree = "<group>"; };
 		8A2714CC220F24DD00A55340 /* ToViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToViewController.swift; sourceTree = "<group>"; };
-		8A2714CE220F250000A55340 /* PresentingAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentingAnimator.swift; sourceTree = "<group>"; };
 		96FC213ADFA2936386BF72A0 /* Pods-UnlikeModal_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnlikeModal_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-UnlikeModal_Example/Pods-UnlikeModal_Example.release.xcconfig"; sourceTree = "<group>"; };
 		B2E88F53A15438DA84C52105 /* Pods-UnlikeModal_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnlikeModal_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UnlikeModal_Example/Pods-UnlikeModal_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		FE70574916EDF5589EB711F5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
@@ -100,7 +98,6 @@
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* FromViewController.swift */,
 				8A2714CC220F24DD00A55340 /* ToViewController.swift */,
-				8A2714CE220F250000A55340 /* PresentingAnimator.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -342,7 +339,6 @@
 			files = (
 				607FACD81AFB9204008FA782 /* FromViewController.swift in Sources */,
 				8A2714CD220F24DD00A55340 /* ToViewController.swift in Sources */,
-				8A2714CF220F250000A55340 /* PresentingAnimator.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
