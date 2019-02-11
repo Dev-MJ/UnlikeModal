@@ -9,13 +9,13 @@ import UIKit
 
 public class UnlikeModalInteractor: NSObject, UIViewControllerTransitioningDelegate {
     
-    var transition: UIViewControllerAnimatedTransitioning?
+    private var transition: UIViewControllerAnimatedTransitioning?
     
     public init(_ transition: UIViewControllerAnimatedTransitioning?) {
         self.transition = transition
     }
     
-    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    private func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return transition
     }
 }
