@@ -11,13 +11,17 @@ import UIKit
 public enum AnimatorType {
     case `default`
     case fadeIn
+    case scaleUp
 }
 
 public class ModalAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
+    // MARK: - Default Properites
     private var duration: TimeInterval = 0.0
-    var originFrame: CGRect = .zero
     private var animate: ((UIViewControllerContextTransitioning) -> Void)?
+    // MARK: -
+    var isPresenting: Bool = false
+    var originFrame: CGRect = .zero
     
     public init?(type: AnimatorType, duration: TimeInterval = 0.0) {
         super.init()
@@ -28,6 +32,11 @@ public class ModalAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         case .fadeIn:
             self.duration = duration
             animate = fadeInAnimation
+            break
+        case .scaleUp:
+            self.duration = duration
+            animate = scaleUpAnimation
+            break
         }   
     }
     
@@ -48,7 +57,7 @@ extension ModalAnimator {
         guard
             let toView = context.view(forKey: .to),
             let fromView = context.view(forKey: .from)
-            else { return }
+        else { return }
         
         containerView.addSubview(toView)
         toView.alpha = 0
@@ -58,5 +67,39 @@ extension ModalAnimator {
         }) { _ in
             context.completeTransition(true)
         }
-    }   
+    }
+    
+    private func scaleUpAnimation(context: UIViewControllerContextTransitioning) {
+        let containerView = context.containerView
+        guard
+            let toView = context.view(forKey: .to),
+            let fromView = context.view(forKey: .from)
+        else { return }
+        
+        let herbView = isPresenting ? toView : fromView
+        let initialFrame = isPresenting ? originFrame : herbView.frame
+        let finalFrame = isPresenting ? herbView.frame : originFrame
+        
+        let xScale = isPresenting ? initialFrame.width / finalFrame.width : finalFrame.width / initialFrame.width
+        
+        let yScale = isPresenting ? initialFrame.height / finalFrame.height : finalFrame.height / initialFrame.height
+        
+        let scaleTransform = CGAffineTransform(scaleX: xScale, y: yScale)
+        if isPresenting {
+            herbView.transform = scaleTransform
+            herbView.center = CGPoint(x: initialFrame.midX, y: initialFrame.midY)
+            herbView.clipsToBounds = true
+        }
+        
+        containerView.addSubview(toView)
+        containerView.bringSubview(toFront: herbView)
+        UIView.animate(withDuration: duration, animations: {
+            herbView.transform = self.isPresenting ?
+                CGAffineTransform.identity : scaleTransform
+            herbView.center = CGPoint(x: finalFrame.midX, y: finalFrame.midY)
+        },
+                       completion: { _ in
+                        context.completeTransition(true)
+        })
+    }
 }

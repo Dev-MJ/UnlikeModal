@@ -15,7 +15,7 @@ class FromViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        interactor = UnlikeModalInteractor(ModalAnimator(type: .fadeIn, duration: 1.0))
+        interactor = UnlikeModalInteractor(ModalAnimator(type: .scaleUp, duration: 1.0))
     
         let tap = UITapGestureRecognizer(target: self, action: #selector(viewDidTap))
         view.addGestureRecognizer(tap)

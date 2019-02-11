@@ -9,13 +9,17 @@ import UIKit
 
 public class UnlikeModalInteractor: NSObject, UIViewControllerTransitioningDelegate {
     
-    private var transition: UIViewControllerAnimatedTransitioning?
+    private var transition: ModalAnimator?
     
-    public init(_ transition: UIViewControllerAnimatedTransitioning?) {
+    public init(_ transition: ModalAnimator?) {
         self.transition = transition
     }
     
-    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationController(forPresented presented: UIViewController,
+                                    presenting: UIViewController,
+                                    source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition?.originFrame = CGRect(x: 50, y: 50, width: 100, height: 100)
+        transition?.isPresenting = true
         return transition
     }
 }
