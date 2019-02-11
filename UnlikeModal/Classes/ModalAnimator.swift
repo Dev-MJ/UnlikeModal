@@ -28,7 +28,7 @@ public class ModalAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         case .fadeIn:
             self.duration = duration
             animate = fadeInAnimation
-        }
+        }   
     }
     
     public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
