@@ -15,7 +15,7 @@ public class UnlikeModalInteractor: NSObject, UIViewControllerTransitioningDeleg
         self.transition = transition
     }
     
-    private func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return transition
     }
 }
