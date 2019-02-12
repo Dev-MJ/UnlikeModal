@@ -11,18 +11,22 @@ import UnlikeModal
 
 class FromViewController: UIViewController {
 
-    var interactor: UnlikeModalInteractor?
+    var interactor: UnlikeModalInteractor = {
+        let transition = ModalAnimator(type: .scale, duration: 1.0)
+        return UnlikeModalInteractor(transition)
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        interactor = UnlikeModalInteractor(ModalAnimator(type: .scaleUp, duration: 1.0))
-    
-        let tap = UITapGestureRecognizer(target: self, action: #selector(viewDidTap))
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(viewDidTap(tap:)))
         view.addGestureRecognizer(tap)
     }
     
-    @objc func viewDidTap() {
+    @objc func viewDidTap(tap: UITapGestureRecognizer) {
         let toVC = ToViewController()
+        let tapPoint = tap.location(in: view)
+        interactor.transition?.originFrame = CGRect(origin: tapPoint, size: CGSize(width: 10, height: 10))
         toVC.transitioningDelegate = interactor
         present(toVC, animated: true, completion: nil)
     }
