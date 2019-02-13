@@ -18,12 +18,12 @@ public class UnlikeModalInteractor: NSObject, UIViewControllerTransitioningDeleg
     public func animationController(forPresented presented: UIViewController,
                                     presenting: UIViewController,
                                     source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition?.isPresenting = true
+        transition?.status = .presenting
         return transition
     }
     
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition?.isPresenting = false
+        transition?.status = .dismissing
         return transition
     }
 }

@@ -14,13 +14,19 @@ public enum AnimatorType {
     case scale
 }
 
+public enum TransitionState {
+    case presenting
+    case dismissing
+    case none
+}
+
 public class ModalAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
     // MARK: - Default Properites
     private var duration: TimeInterval = 0.0
     private var animate: ((UIViewControllerContextTransitioning) -> Void)?
     // MARK: -
-    var isPresenting: Bool = false
+    var status: TransitionState = .none
     var originFrame: CGRect = .zero
     
     public init?(type: AnimatorType, duration: TimeInterval = 0.0) {
@@ -56,11 +62,12 @@ extension ModalAnimator {
         let containerView = context.containerView
         guard
             let toView = context.view(forKey: .to),
-            let fromView = context.view(forKey: .from)
-            else { return }
+            let fromView = context.view(forKey: .from),
+            status != .none
+        else { return }
         
-        let animatedView = isPresenting ? toView : fromView
-        let defaultAlpha: CGFloat = isPresenting ? 0 : 1
+        let animatedView = (status == .presenting) ? toView : fromView
+        let defaultAlpha: CGFloat = (status == .presenting) ? 0 : 1
         
         containerView.addSubview(toView)
         containerView.bringSubview(toFront: animatedView)
@@ -78,18 +85,19 @@ extension ModalAnimator {
         let containerView = context.containerView
         guard
             let toView = context.view(forKey: .to),
-            let fromView = context.view(forKey: .from)
-            else { return }
+            let fromView = context.view(forKey: .from),
+            status != .none
+        else { return }
         
-        let animatedView = isPresenting ? toView : fromView
-        let initialFrame = isPresenting ? originFrame : animatedView.frame
-        let finalFrame = isPresenting ? animatedView.frame : originFrame
+        let animatedView = (status == .presenting) ? toView : fromView
+        let initialFrame = (status == .presenting) ? originFrame : animatedView.frame
+        let finalFrame = (status == .presenting) ? animatedView.frame : originFrame
         
-        let xScale = isPresenting ? (initialFrame.width / finalFrame.width) : (finalFrame.width / initialFrame.width)
-        let yScale = isPresenting ? (initialFrame.height / finalFrame.height) : (finalFrame.height / initialFrame.height)
+        let xScale = (status == .presenting) ? (initialFrame.width / finalFrame.width) : (finalFrame.width / initialFrame.width)
+        let yScale = (status == .presenting) ? (initialFrame.height / finalFrame.height) : (finalFrame.height / initialFrame.height)
         
         let scaleTransform = CGAffineTransform(scaleX: xScale, y: yScale)
-        if isPresenting {
+        if (status == .presenting) {
             animatedView.transform = scaleTransform
             animatedView.center = CGPoint(x: initialFrame.midX, y: initialFrame.midY)
             animatedView.clipsToBounds = true
@@ -102,7 +110,7 @@ extension ModalAnimator {
                        usingSpringWithDamping: 1.0,
                        initialSpringVelocity: 0.5,
                        animations: {
-                        animatedView.transform = self.isPresenting ? .identity : scaleTransform
+                        animatedView.transform = (self.status == .presenting) ? .identity : scaleTransform
                         animatedView.center = CGPoint(x: finalFrame.midX, y: finalFrame.midY)
         }) { didComplete in
             context.completeTransition(didComplete)
